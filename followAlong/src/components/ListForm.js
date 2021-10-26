@@ -8,10 +8,18 @@ class ListForm extends React.Component {
   };
 
   // class property to submit form
+    // class property to submit form
+    handleSubmit = (e)=>{
+      e.preventDefault();
+      console.log("Add click === ", this.props)
+      this.props.handleAddItem()
+      // this.props.handleAddItem(this.state.input);
+    }
+
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         {/* This is an uncontrolled component 😬 We want it to be controlled by state */}
         <input type="text" name="item" />
         <button>Add</button>

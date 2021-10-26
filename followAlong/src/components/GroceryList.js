@@ -10,9 +10,9 @@ const GroceryList = props => {
       {props.groceries.map(item => (
         <Item key={item.id} item={item} />
       ))}
-      <button className="clear-btn">
+      {/* <button className="clear-btn">
         Clear Purchased
-      </button>
+      </button> */}
     </div>
   );
 };

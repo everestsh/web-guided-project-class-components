@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import GroceryList from './components/GroceryList';
+import Item from './components/Item';
 import ListForm from './components/ListForm';
 import './styles.scss';
 
@@ -19,7 +20,7 @@ const groceries = [
   {
     name: 'Milk',
     id: 1235,
-    purchased: false
+    purchased: true
   },
   {
     name: 'Pizza Sauce',
@@ -42,25 +43,36 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      ...groceries,
       groceries: groceries
     }
   }
   handleClear = ()=> {
+    //1. Clear Purchased
+    // -  handle button click
+    // -  setState of groceries
+    // -  take this.state.groceries and return only grocery items where purchased = true
     console.log("clear")
+    this.setState({
+      ...this.state,
+      // groceries: groceries.filter( item=>  item.purchased === false)
+      groceries: this.state.groceries.filter(item=> !item.purchased)
+    });
   }
+
+  handleAddItem = (name) => {
+    console.log("index: handleAddItem")
+  }
+
   // Class methods to update state
   render() {
     return (
       <div className="App">
-        <div className="header">
+          <div className="header">
            <h1>Shopping List</h1>
-           <ListForm />
+           <ListForm handleAddItem={this.handleAddItem}/>
          </div>
-        <GroceryList groceries={groceries} />
-        <button className="clear-btn">
-        Clear Purchased
-      </button>
+        <GroceryList groceries={this.state.groceries} />
+        <button onClick={this.handleClear} className="clear-btn">Clear Purchased</button>
        </div>
     );
   }
