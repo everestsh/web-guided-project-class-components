@@ -60,6 +60,20 @@ class App extends React.Component {
   }
 
   handleAddItem = (name) => {
+    //2. Add Item
+    // - create a newItem
+    // - setState and retain old state
+    // - save all current groceries and add on newItem to the end
+    const newItem = {
+      // name: name,
+      name: 'Chip',
+      id: Date.now(),
+      purchased: false
+    };
+    this.setState({
+      ...this.state,
+      groceries: [...this.state.groceries, newItem]
+    });
     console.log("index: handleAddItem")
   }
 
