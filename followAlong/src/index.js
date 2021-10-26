@@ -78,6 +78,28 @@ class App extends React.Component {
     console.log("index: handleAddItem")
   }
 
+  handleToggleItem = (item) => {
+    //3. Toggle Item
+    // - setState and retain old state
+    // - find the item that matches our clicked item id
+    // - replace that item with same but purchased flipped
+    // - leave all other items alone
+    console.log("index: handleToggleItem ", item.name)
+
+    this.setState({
+      ...this.state,
+      groceries: this.state.groceries.map(grocery => {
+        if (grocery.id === item.id) {
+          return {
+            ...grocery,
+            purchased: !grocery.purchased //(grocery.purchased)? false: true
+          }
+        }
+        return grocery;
+      })
+    });
+
+  }
   // Class methods to update state
   render() {
     return (
@@ -86,7 +108,7 @@ class App extends React.Component {
            <h1>Shopping List</h1>
            <ListForm handleAddItem={this.handleAddItem}/>
          </div>
-        <GroceryList groceries={this.state.groceries} />
+        <GroceryList handleToggleItem={this.handleToggleItem} groceries={this.state.groceries} />
         <button onClick={this.handleClear} className="clear-btn">Clear Purchased</button>
        </div>
     );
