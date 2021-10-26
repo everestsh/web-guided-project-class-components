@@ -9,7 +9,7 @@ const groceries = [
   {
     name: 'Bananas',
     id: 123,
-    purchased: false
+    purchased: true
   },
   {
     name: 'Torillas',
@@ -39,6 +39,16 @@ const groceries = [
 ];
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      ...groceries,
+      groceries: groceries
+    }
+  }
+  handleClear = ()=> {
+    console.log("clear")
+  }
   // Class methods to update state
   render() {
     return (
@@ -48,6 +58,9 @@ class App extends React.Component {
            <ListForm />
          </div>
         <GroceryList groceries={groceries} />
+        <button className="clear-btn">
+        Clear Purchased
+      </button>
        </div>
     );
   }
