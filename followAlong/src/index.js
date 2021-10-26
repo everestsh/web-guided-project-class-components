@@ -65,8 +65,9 @@ class App extends React.Component {
     // - setState and retain old state
     // - save all current groceries and add on newItem to the end
     const newItem = {
+      name: name,
       // name: name,
-      name: 'Chip',
+      // name: 'Chip',
       id: Date.now(),
       purchased: false
     };
