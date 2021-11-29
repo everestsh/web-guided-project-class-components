@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
+  const [state, setState] = useState({
+    name: 'Allison',
+    age: 33
+  })
   return (
     <div>
-      <h1>Hello Warren</h1>
+      <h1>Hello {state.name}, You are {state.age} years old.</h1>
+      <button onClick={()=>{
+        setState({
+          ...state,
+          name: "Warren"
+        })
+      }}>Change the name to Warren</button>
     </div>
   );
 };
