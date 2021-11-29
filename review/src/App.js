@@ -1,10 +1,11 @@
 import React from "react";
 import Message from "./components/MessageComponent"
+import Name from "./components/NameComponents"
 class App extends React.Component{
   constructor(){
     super();
     this.state = {
-      message : "Hello from state!",
+      message : "Hello from props!",
       name: "Ryan"
     }
   }
@@ -13,7 +14,8 @@ class App extends React.Component{
     return (
       <div>
         <h1>{this.state.message}, My name is {this.state.name}</h1>
-        <Message message={this.state.message}/>
+        <Message propsMessage={this.state.message}/>
+        <Name propsName={this.state.name}/>
       </div>
     );
   } 
