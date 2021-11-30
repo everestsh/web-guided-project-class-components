@@ -60,7 +60,7 @@ class App extends React.Component {
     console.log("Index.js handleAddItem")
     const newItem = {
       name: item,
-      id : Date.now,
+      id : Date.now(),
       purchased: false
     }
 
@@ -71,11 +71,27 @@ class App extends React.Component {
 
 
   }
-  handleToggle = () => {
+  handleClearItem = () => {
     this.setState({
       ...this.state,
       groceries: this.state.groceries.filter(item => {
         return (!item.purchased)
+      })
+    })
+  }
+  handleToggleItem = (item) => {
+    // console.log("handleToggleItem")
+    this.setState({
+      ...this.state,
+      groceries: this.state.groceries.map(grocerie=>{
+        if(grocerie.id === item.id){
+          return{
+            ...grocerie,
+            purchased: !grocerie.purchased
+          }
+        }
+        return grocerie
+        
       })
     })
   }
@@ -86,8 +102,9 @@ class App extends React.Component {
            <h1>Shopping List</h1>
            <ListForm handleAddItem={this.handleAddItem} />
          </div>
-        <GroceryList groceries={this.state.groceries} />
-        <button onClick={this.handleToggle} className="clear-btn">Clear Purchased</button>
+        <GroceryList handleToggleItem={this.handleToggleItem} groceries={this.state.groceries} />
+        <button onClick={this.handleClearItem} className="clear-btn">Clear Purchased</button>
+
        </div>
     );
   }
