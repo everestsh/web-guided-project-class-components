@@ -6,6 +6,9 @@ class App extends React.Component {
   handleDoubleClickEvent = () => alert("Double Click Event Triggered")
   handleMouseEnter = () => alert("Mouse Enter Event Triggered")
   handleMouseLeave = () => alert("Mouse Leave Event Triggered")
+  handleInputChange = event => {
+    console.log(event.target.value)
+  }
   render(){
     return (
       <div>
@@ -18,7 +21,7 @@ class App extends React.Component {
         <hr/>
         <div onMouseLeave={this.handleMouseLeave}>Mouse Leave</div>
         <hr/>
-        <input type="text" placeholder="Change me"/>
+        <input onChange={this.handleInputChange} type="text" placeholder="Change me"/>
       </div>
     );
   }
