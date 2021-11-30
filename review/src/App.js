@@ -54,11 +54,32 @@ grover.describe()
 grover.talk()
 grover.dogStuff()
 
+class SubComponent extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      name: "Warren"
+    }
+  }
 
+  render(){
+    return <dev>
+      <h1>{this.state.name}</h1>
+      <button onClick={()=>{ this.setState({
+        name: "Allision"
+      })}} >
+        Click
+      </button>
+    </dev>
+  }
+}
 const App = () => {
   return (  
     <div>
       <h1>Hello Warren</h1>
+      <SubComponent />
+      <SubComponent />
+      <SubComponent />
     </div>
   );
 };
